@@ -6,20 +6,30 @@
     <meta charset="utf-8">
     <title> Nascar Ultimate Collectors Guide </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <h1> Nascar Ultimate Collectors Guide </h1>
-        <img class="logo" src="/media/nascarlogotransparent.png" alt="Nascar Logo">
-        <nav>
-            <p>
-                <a href="index.html"> Home </a>  
-                <a href="nascarauthentics.html"> Nascar Authentics 1:64 </a>  
-                <a href="nascargold.html"> Nascar Authentics 1:64 Gold Series </a> 
-                <a href="carssingle.html"> Disney Pixar Cars Singles 1:64 </a>
-                <a href="carsthemed.html"> Disney Pixar Cars Themed Series </a> 
-            </p>
+        <div class="header-brand">
+            <img class="logo" src="/media/nascarlogotransparent.png" alt="Nascar Logo">
+            <h1>Nascar Ultimate Collectors Guide</h1>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="nascarauthentics.html">Nascar Authentics 1:64</a></li>
+                <li><a href="nascargold.html">Gold Series</a></li>
+                <li><a href="carssingle.html">Cars Singles 1:64</a></li>
+                <li><a href="carsthemed.html">Cars Themed Series</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -64,3 +74,15 @@
     as complete sets, making them perfect for checklist-style collecting and easy
     progress tracking.
         </p>
+    </main>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('main-nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            nav.classList.toggle('open');
+        });
+    </script>
+</body>

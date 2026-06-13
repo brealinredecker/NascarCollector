@@ -1,0 +1,274 @@
+/* ============================================
+   NASCAR ULTIMATE COLLECTORS GUIDE
+   styles.css — Shared stylesheet for all pages
+   ============================================ */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+
+/* --- CSS Variables (Design Tokens) --- */
+:root {
+    --red:        #E31837;
+    --yellow:     #FFC906;
+    --black:      #111111;
+    --text:       #1A1A1A;
+    --bg:         #F5F5F5;
+    --white:      #FFFFFF;
+    --nav-height: 64px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+header {
+    background-color: var(--black);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--red);
+}
+
+/* Logo + Title group */
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-brand .logo {
+    height: 40px;
+    width: auto;
+}
+
+.header-brand h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+/* Desktop nav links */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+nav ul li a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: #CCCCCC;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--yellow);
+}
+
+nav ul li a.active {
+    color: var(--white);
+    background-color: var(--red);
+}
+
+/* Hamburger button (hidden on desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Hamburger open state (X) */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ============================================
+   MOBILE NAV
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background-color: var(--black);
+        border-top: 1px solid #2a2a2a;
+        border-bottom: 3px solid var(--red);
+        padding: 12px 0;
+        z-index: 99;
+    }
+
+    nav.open {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 14px 24px;
+        border-radius: 0;
+        font-size: 1.1rem;
+    }
+
+    nav ul li a:hover {
+        background-color: #1e1e1e;
+    }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+/* Page heading */
+main h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.05em;
+    color: var(--red);
+    margin-bottom: 8px;
+}
+
+main > p {
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 40px;
+}
+
+/* Series cards on home page */
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.series-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 24px;
+    border-left: 4px solid var(--red);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.series-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.series-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.series-card p {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.series-card a {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    transition: color 0.2s;
+}
+
+.series-card a:hover {
+    color: var(--yellow);
+}
+
+@media (max-width: 600px) {
+    .series-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.8rem;
+    color: #999999;
+    border-top: 1px solid #DDDDDD;
+    margin-top: 48px;
+}
